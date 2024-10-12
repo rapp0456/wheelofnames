@@ -642,8 +642,10 @@
             <!-- Entries and Results Tabs -->
             <div class="tabs" style="margin-top: -70px; margin-right: -50px;">
                 <ul>
-                    <li id="entriesTab" class="" style="background-color: #0d0d0d; font-size: 15px; font-weight: bold;">Entries<span class="tab-count">6</span></li>
-                    <li id="resultsTab" style="background-color: #0d0d0d; font-size: 15px; font-weight: bold;">Results<span class="tab-count">3</span></li>
+                    <li id="entriesTab" class="" style="background-color: #0d0d0d; font-size: 15px; font-weight: bold;">
+                        Entries<span class="tab-count">6</span></li>
+                    <li id="resultsTab" style="background-color: #0d0d0d; font-size: 15px; font-weight: bold;">
+                        Results<span class="tab-count">3</span></li>
                     <input type="checkbox" id="hideResults">
                     <label for="hideResults" style="margin-top: 7px;"> Hide</label>
                 </ul>
@@ -659,7 +661,8 @@
                 </div>
 
                 <!-- Text Area and Input -->
-                <textarea id="names" rows="15" cols="30" style="font-family: Arial; font-size: 16px; padding: 10px; width: 284px; line-height: 1.5"><?php echo htmlspecialchars($names); ?></textarea>
+                <textarea id="names" rows="15" cols="30"
+                    style="font-family: Arial; font-size: 16px; padding: 10px; width: 284px; line-height: 1.5"><?php echo htmlspecialchars($names); ?></textarea>
 
                 <script>
                     // Add this function to send AJAX request to update the database
@@ -667,7 +670,7 @@
                         const xhr = new XMLHttpRequest();
                         xhr.open("POST", "update_names.php", true);
                         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                        xhr.onreadystatechange = function() {
+                        xhr.onreadystatechange = function () {
                             if (xhr.readyState === XMLHttpRequest.DONE) {
                                 if (xhr.status === 200) {
                                     console.log(xhr.responseText); // For debugging
@@ -680,7 +683,7 @@
                     }
 
                     // Modify the event listener for the textarea
-                    document.getElementById("names").addEventListener("input", function() {
+                    document.getElementById("names").addEventListener("input", function () {
                         createWheel(); // Update the wheel with the new names
                         updateDatabase(this.value); // Update the database with the new names
                     });
@@ -1247,7 +1250,7 @@
             function animate() {
                 if (pause) return;
                 // speed = easeOutSine(getPercent(currentDeg, maxRotation, 0)) * 30; // Increase speed for a faster spin
-                speed = easeOutSine((getPercent(currentDeg, maxRotation, 360))) * 10; // Increase speed for a faster spin
+                speed = easeOutSine((getPercent(currentDeg, maxRotation, 180))) * 20; // Increase speed for a faster spin
                 /* console.log(`CURRENT DEG: ${currentDeg}`);
             console.log(`PERCENTAGE: ${getPercent(currentDeg, maxRotation, 0) * 10}`);
             console.log(`SPEED: ${speed}`);
@@ -1339,12 +1342,11 @@
                     currentDeg = 0; // Reset the current degree to start spinning again
                     draw();
                 } else {
-                    console.log(`CURRENT DEG: ${currentDeg}`);
-                    console.log(`RANDOM MULTIPLIER: ${randomMultiplier}`);
-                    console.log(`maxRotation: ${maxRotation}`);
 
                     // If the specified name is not found or input is empty, spin randomly
-                    maxRotation = currentDeg + randomMaxRotation;
+                    maxRotation = randomRange();
+                    currentDeg = 0; // Reset the current degree to start spinning again
+                    console.log(`maxRotation: ${maxRotation}`);
                 }
 
                 pause = false; // Resume the animation
@@ -1355,6 +1357,16 @@
             function randomSegmentOfColor() {
                 return Math.random() * 56.40000000000009;
             }
+
+            function randomRange() {
+                const randomMultiplier = randomSegmentOfColor();
+                console.log(`RANDOM MULTIPLIER: ${randomMultiplier}`);
+                const a = [1142, 1202];
+                const index = Math.floor(Math.random() * 2)
+                return a[index] + randomMultiplier;
+            }
+
+
             // Event listener for key presses
             window.addEventListener('keydown', (event) => {
                 switch (event.key) {
@@ -1382,6 +1394,11 @@
                         maxRotation = darkSegmentRandom
                         console.log(`predeterminedResult: ${predeterminedResult}`);
                         document.getElementById('stopName').value = predeterminedResult;
+                        break;
+
+                    case '3':
+                        maxRotation = randomRange();
+                        document.getElementById('stopName').value = '';
                         break;
                     default:
                         break;
