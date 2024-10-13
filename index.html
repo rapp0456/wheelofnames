@@ -1246,11 +1246,11 @@
             let maxRotation = 0; // Reset this for each spin
             let pause = false;
             let lightSegments = []; // To store segment names dynamically
-
+            let speedIncrease = 0;
             function animate() {
                 if (pause) return;
                 // speed = easeOutSine(getPercent(currentDeg, maxRotation, 0)) * 30; // Increase speed for a faster spin
-                speed = easeOutSine((getPercent(currentDeg, maxRotation, 180))) * 20; // Increase speed for a faster spin
+                speed = easeOutSine((getPercent(currentDeg, maxRotation, 0))) * 50; // Increase speed for a faster spin
                 /* console.log(`CURRENT DEG: ${currentDeg}`);
             console.log(`PERCENTAGE: ${getPercent(currentDeg, maxRotation, 0) * 10}`);
             console.log(`SPEED: ${speed}`);
