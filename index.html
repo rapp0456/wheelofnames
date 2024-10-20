@@ -7,29 +7,38 @@
     <title>Wheel of Names</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Bangers&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./images/logo_2-removebg-preview.png">
     <!-- <link rel="stylesheet" href="./css/app-v310.css"> -->
     <!-- <link rel="stylesheet" href="./css/EditWheelPage-v310.css"> -->
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
     <style>
         body {
             background-color: #0d0d0d;
-            font-family: Arial, sans-serif;
+            font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            /* padding: 0; */
         }
 
         .navbar {
-            background-color: #3367D6;
+            background-color: #3369e8;
             overflow: hidden;
-            padding: 5px 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 101;
         }
 
         .navbar .logo {
             display: flex;
             align-items: center;
             padding-left: 20px;
+            font-weight: 400;
         }
 
         .navbar .logo img {
@@ -37,24 +46,40 @@
             margin-right: 10px;
         }
 
+        .navbar .title {
+            font-size: 21px;
+            font-weight: 400;
+            letter-spacing: .01em;
+            color: #fff;
+        }
+
         .navbar .menu {
             display: flex;
+            justify-content: space-around;
+            min-width: 850px;
             list-style: none;
             margin-right: 20px;
+            font-weight: 500;
         }
 
         .navbar .menu li {
+            display: flex;
+            justify-content: space-around;
             margin: 0 10px;
             position: relative;
+        }
+
+        .navbar .menu .dropdown {
+            display: flex;
+            gap: 4px;
         }
 
         .navbar .menu li a {
             color: white;
             text-decoration: none;
-            font-size: 14px;
             display: flex;
             align-items: center;
-            font-size: 15px;
+            font-size: 16px;
         }
 
         .navbar .menu li a:hover {
@@ -112,7 +137,6 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            cursor: pointer;
         }
 
         .triangle {
@@ -123,9 +147,10 @@
             border-right: 40px solid #BBBBBB;
             position: absolute;
             top: 50%;
-            right: -220%;
+            right: -290%;
             transform: translateY(-50%);
             filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.6));
+            /* margin-right: -50px; */
         }
 
 
@@ -142,7 +167,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 40px;
+            /* flex: 0.5; */
         }
 
         /* Modal Styles */
@@ -182,6 +207,7 @@
             cursor: pointer;
         }
 
+
         /* New styles to center the wheel and move the name list to the right */
         .container {
             display: flex;
@@ -189,81 +215,117 @@
             /* Space between the wheel and the name list */
             /* align-items: flex-start; */
             /* Align both items at the top */
-            margin-top: 40px;
+            /* margin-top: 40px; */
+            padding: 40px 20px;
         }
 
         .wheel {
             display: flex;
             justify-content: center;
             position: relative;
-            flex: 1;
+            /* flex: 1; */
         }
 
-        @media (max-width: 990px) {
-            .container {
-                flex-direction: column;
-                gap: 8rem;
-            }
-
-            .inputArea {
-                /* margin-right: 50px; */
-                flex-wrap: wrap;
-                align-content: center;
-                /* align-items: baseline; */
-                width: 100%;
-            }
-
+        .menu-mobile {
+            display: none;
+            visibility: hidden;
+            padding-inline: 10px;
         }
 
-        @media (max-width: 768px) {
-            .navbar .menu {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .navbar .menu li {
-                margin: 10px 0;
+        @media (max-width: 1240px) {
+            .triangle {
+                border-top: 15px solid transparent;
+                border-bottom: 15px solid transparent;
+                border-right: 30px solid #BBBBBB;
+                right: -190%;
             }
 
             .container {
                 flex-direction: column;
-                align-items: center;
+                padding: 12px 14px !important;
+            }
+
+            .col-1 {
+                /* width: 100% !important; */
+                width: inherit !important;
+                /* flex: 1; */
+                /* height: 7em !important; */
+                padding-block-end: 4em !important;
             }
 
             .wheel {
-                margin: 20px 0;
-                max-width: 90%;
+                flex: 1 !important;
+                /* width: 100%; */
+                justify-content: center;
             }
 
-            .center-circle {
-                width: 60px;
-                height: 60px;
+            .inputArea {
+                flex: 1;
+                /* width: 95%; */
+                align-items: initial !important;
+                padding-block-start: 2em;
             }
+
+            .entry-container {
+                width: 96% !important;
+                padding: 12px !important;
+            }
+
+            .result-container {
+                width: 96% !important;
+                padding: 12px !important;
+            }
+
+            #names {
+                width: inherit !important;
+            }
+
+            .menu {
+                min-width: 40px !important;
+            }
+
         }
 
-        @media (max-width: 480px) {
-            .navbar .logo img {
-                height: 30px;
+        @media (max-width: 631px) {
+
+            .li-textarea>label {
+                padding-inline-end: 1.75em;
             }
 
-            .navbar .menu li a {
-                font-size: 12px;
+            .entry-tab {
+                padding-inline-start: 2.5rem !important;
+                width: 140px;
             }
 
-            .center-circle {
-                width: 50px;
-                height: 50px;
+            #resultsTab {
+                /* padding-inline: 0 !important; */
             }
 
-            .buttons button {
-                font-size: 10px;
+            .helper::after,
+            .helper::before {
+                left: 33% !important; 
             }
 
-            .container {
-                padding: 0 20px;
-            }
         }
 
+
+        .results-textbox[data-v-3b837523] {
+            border: 1px solid;
+            border-radius: 4px;
+            flex-grow: 1;
+            font-family: BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+            overflow: auto;
+            padding: .6rem
+        }
+
+        .results-textbox[data-v-3b837523] {
+            border-color: #dbdbdb;
+            box-shadow: inset 0 1px 2px #0a0a0a4d
+        }
+
+        .results-textbox[data-v-3b837523] {
+            border-color: #777
+        }
 
         .inputArea {
             display: flex;
@@ -273,8 +335,13 @@
             /* Push the input area to the right */
         }
 
+        #canvas {
+            /* width: 100%; */
+        }
+
         /* Main container */
-        .main-container {
+        .entry-container {
+            display: none;
             background-color: #1f1f1f;
             /* Background color for the container */
             padding: 20px;
@@ -285,26 +352,66 @@
             /* Subtle shadow for depth */
             width: 300px;
             /* Set width for the container */
-            margin: 20px auto;
+            /* margin: 20px auto; */
             /* Center the container */
             color: #fff;
             /* Text color */
-            margin-top: -40px;
-            margin-right: -50px;
+            /* margin-top: -40px; */
+            /* margin-right: -50px; */
+        }
+
+        .result-container {
+            background-color: #1f1f1f;
+            /* Background color for the container */
+            padding: 20px;
+            /* Padding inside the container */
+            border-radius: 10px;
+            /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Subtle shadow for depth */
+            width: 300px;
+            /* Set width for the container */
+            /* margin: 20px auto; */
+            /* Center the container */
+            color: #fff;
+            /* min-height: 312px; */
+            /* max-height: 400px; */
+            /* Text color */
+            /* margin-top: -40px; */
+            /* margin-right: -50px; */
+        }
+
+
+        .tab-panel {
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            width: 100%;
         }
 
         /* Tabs Section */
         .tabs {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            max-width: 800px;
+            margin-bottom: -30px;
         }
+
+        .textarea {
+            display: flex;
+        }
+
 
         .tabs ul {
             list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
+            /* border: 10px solid green; */
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
         }
 
         .tabs ul li {
@@ -313,7 +420,6 @@
             color: #fff;
             cursor: pointer;
             border-radius: 5px 5px 0 0;
-            margin-right: 5px;
             font-size: 14px;
         }
 
@@ -325,6 +431,11 @@
             background-color: #555;
         }
 
+        .title {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         /* Tab count */
         .tab-count {
             background-color: #666;
@@ -334,34 +445,112 @@
             margin-left: 5px;
         }
 
+        .tabs>ul {
+            position: relative;
+        }
+
+        .helper::after,
+        .helper::before {
+            background-color: #fff;
+            border-radius: inherit;
+            content: "";
+            opacity: 1;
+            position: absolute;
+            transition: background-color .3s cubic-bezier(.25, .8, .5, 1), opacity .6s cubic-bezier(.25, .8, .5, 1);
+            width: 35%;
+            top: 120%;
+            bottom: -10px;
+            left: 43%;
+            right: 0px;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        /* Style the custom checkbox */
+        .custom-checkbox {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ccc;
+            /* Gray border */
+            border-radius: 2px;
+            /* Rounded corners */
+            position: relative;
+            cursor: pointer;
+        }
+
+        /* Style the label */
+        /* label {
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+        } */
+
+        /* Create the checkmark */
+        .custom-checkbox::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: -1px;
+            width: 4px;
+            height: 12px;
+            border: solid #fff;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            display: none;
+        }
+
+        /* When the checkbox is checked */
+        input[type="checkbox"]:checked+.custom-checkbox {
+            background-color: #3369e8;
+            /* Fill the background when checked */
+            border-color: #3369e8;
+            /* White border when checked */
+        }
+
+        /* Show the checkmark when checked */
+        input[type="checkbox"]:checked+.custom-checkbox::after {
+            display: block;
+        }
+
         /* Hide checkbox */
         #hideResults {
             margin-left: 15px;
         }
 
-        #hideResults+label {
+        label {
             color: #fff;
-            font-size: 14px;
             cursor: pointer;
+            font-size: 15px;
+            font-weight: 400;
+            font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: center;
+            display: flex;
+            /* align-items: center; */
+            gap: 6px;
         }
 
         /* Buttons Section */
         .buttons {
             display: flex;
             gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 16px;
         }
 
         .buttons button {
             background-color: #333;
             color: #fff;
             border: none;
-            padding: 8px 15px;
+            padding: 8px;
             cursor: pointer;
             border-radius: 5px;
             font-size: 12px;
             display: flex;
             align-items: center;
+            font-weight: 600;
+            font-family: Roboto, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         .buttons button i {
@@ -371,6 +560,28 @@
         .buttons button:hover {
             background-color: #555;
         }
+
+
+        .col-1 {
+            width: 10rem
+        }
+
+        .edit-btn {
+            background: #3369e8;
+            color: #fff;
+            outline: none;
+            border: none;
+            min-height: 2.4em;
+            min-width: 2.4em;
+            padding: 12px;
+            text-align: center;
+            border-radius: 50%;
+        }
+
+        .edit-btn-icon {
+            font-size: 1rem;
+        }
+
 
         /* Text Area and Input */
         textarea,
@@ -390,241 +601,111 @@
         .advanced {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
+            /* margin-bottom: 10px; */
         }
 
         .advanced input[type="checkbox"] {
             margin-right: 5px;
         }
-    </style>
-
-
-    <!-- <style>
-        /* General styling */
-        body {
-            background-color: #0d0d0d;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .navbar {
-            background-color: #3367D6;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-weight: bold;
-        }
-
-        
-        .navbar .logo {
-            display: flex;
-            align-items: center;
-            padding-left: 20px;
-        }
-
-        .navbar .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        .navbar .menu {
-            display: flex;
-            list-style: none;
-            margin-right: 20px;
-        }
-
-        .navbar .menu li {
-            margin: 0 10px;
-            position: relative;
-        }
-
-        .navbar .menu li a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            font-size: 15px;
-        }
-
-        .navbar .menu li a:hover {
-            color: #A3C1E6;
-        }
-
-        .navbar .menu .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #3367D6;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .header {
-            padding: 40px;
-            color: #fff;
-            text-align: center;
-        }
-
-        .center-circle {
-            width: 80px;
-            height: 80px;
-            background-color: #fff;
-            position: absolute;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .triangle {
-            width: 0;
-            height: 0;
-            border-top: 20px solid transparent;
-            border-bottom: 20px solid transparent;
-            border-right: 40px solid #BBBBBB;
-            position: absolute;
-            top: 50%;
-            right: -220%;
-            transform: translateY(-50%);
-            filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.6));
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .wheel {
-            display: flex;
-            justify-content: center;
-            position: relative;
-            flex: 1;
-            max-width: 600px;
-            margin: 0 auto;
-            cursor: pointer;
-        }
-
-        .inputArea {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 40px;
-        }
-
-        textarea,
-        input {
-            width: 100%;
-            background-color: rgba(20, 20, 20, 0.2);
-            color: #fff;
-            border: 1px solid #666;
-            padding: 8px;
-            border-radius: 5px;
-        }
 
         .buttons {
             display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-            justify-content: center;
-        }
-
-        .buttons button {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 8px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 12px;
-            display: flex;
             align-items: center;
+            flex-wrap: wrap;
         }
-
-        @media (max-width: 768px) {
-            .navbar .menu {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .navbar .menu li {
-                margin: 10px 0;
-            }
-
-            .container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .wheel {
-                margin: 20px 0;
-                max-width: 90%;
-            }
-
-            .center-circle {
-                width: 60px;
-                height: 60px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .navbar .logo img {
-                height: 30px;
-            }
-
-            .navbar .menu li a {
-                font-size: 12px;
-            }
-
-            .center-circle {
-                width: 50px;
-                height: 50px;
-            }
-
-            .buttons button {
-                font-size: 10px;
-            }
-
-            .container {
-                padding: 0 20px;
-            }
-        }
-    </style> -->
+    </style>
 
 </head>
 
 <body>
-    <!-- <div class="navbar" style="margin-top: -10px; margin-left: -15px;">
+    <div class="navbar">
         <div class="logo">
-            <img src="logo_2.png" alt="Wheel Logo" style="border-radius: 50%;"> 
-            <span style="color: white; font-size: 18px;">wheelofnames.com</span>
+            <!-- <img src="./images/logo_2.PNG" alt="Wheel Logo" style="border-radius: 50%;" class="iconLogo">
+            <span class="title">wheelofnames.com</span> -->
         </div>
-        <ul class="menu">
-            <li><a href="#"><i class="fas fa-palette"></i> Customize</a></li>&nbsp &nbsp &nbsp &nbsp
-            <li><a href="#"><i class="fas fa-file-alt"></i> New</a></li> &nbsp &nbsp &nbsp &nbsp
-            <li><a href="#"><i class="fas fa-folder-open"></i> Open</a></li>&nbsp &nbsp &nbsp &nbsp
-            <li><a href="#"><i class="fas fa-save"></i> Save</a></li>&nbsp &nbsp &nbsp &nbsp
-            <li><a href="#"><i class="fas fa-share-alt"></i> Share</a></li>&nbsp &nbsp &nbsp &nbsp
-            <li><a href="#"><i class="fas fa-search"></i> Gallery</a></li>&nbsp &nbsp &nbsp &nbsp
+        <ul class="menu" id="mainMenu">
+            <!-- <li><a href="#"><i class="fas fa-palette"></i> Customize</a></li>
+            <li><a href="#"><i class="fas fa-file-alt"></i> New</a></li>
+            <li><a href="#"><i class="fas fa-folder-open"></i> Open</a></li>
+            <li><a href="#"><i class="fas fa-save"></i> Save</a></li>
+            <li><a href="#"><i class="fas fa-share-alt"></i> Share</a></li>
+            <li><a href="#"><i class="fas fa-search"></i> Gallery</a></li>
+            <li> <a href="#"> <svg width="18px" height="18px" viewBox="0 0 24.00 24.00" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" stroke="#ffff"
+                        transform="rotate(0)matrix(1, 0, 0, -1, 0, 0)">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M4 9V5.6C4 5.03995 4 4.75992 4.10899 4.54601C4.20487 4.35785 4.35785 4.20487 4.54601 4.109C4.75992 4 5.03995 4 5.6 4L9 4M4 15V18.4C4 18.9601 4 19.2401 4.10899 19.454C4.20487 19.6422 4.35785 19.7951 4.54601 19.891C4.75992 20 5.03995 20 5.6 20L9 20M15 4H18.4C18.9601 4 19.2401 4 19.454 4.10899C19.6422 4.20487 19.7951 4.35785 19.891 4.54601C20 4.75992 20 5.03995 20 5.6V9M20 15V18.4C20 18.9601 20 19.2401 19.891 19.454C19.7951 19.6422 19.6422 19.7951 19.454 19.891C19.2401 20 18.9601 20 18.4 20H15"
+                                stroke="fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg></a></li>
             <li class="dropdown">
                 <a href="#">More</a>
-                <div class="dropdown-content">
-                    <a href="#">Option 1</a>
-                    <a href="#">Option 2</a>
-                </div>
+                <svg width="22px" height="22px" viewBox="-2.4 -2.4 28.80 28.80" xmlns="http://www.w3.org/2000/svg"
+                    fill="#fff" stroke="#fff" stroke-width="0.00024000000000000003">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <rect x="0" fill="none" width="24" height="24"></rect>
+                        <g>
+                            <path d="M7 10l5 5 5-5"></path>
+                        </g>
+                    </g>
+                </svg>
+
             </li>&nbsp &nbsp
-            <li><a href="#"><i class="fas fa-globe"></i>English</a></li>
+            <li><a href="#"><i class="fas fa-globe"></i>English</a></li> -->
         </ul>
-    </div> -->
+        <ul class="menu-mobile">
+            <!-- <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
+                    stroke-width="0.8640000000000001"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path d="M5 7H19" stroke="#fff" stroke-width="1.56" stroke-linecap="round" stroke-linejoin="round">
+                    </path>
+                    <path d="M5 12L19 12" stroke="#fff" stroke-width="1.56" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    <path d="M5 17L19 17" stroke="#fff" stroke-width="1.56" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </g>
+            </svg> -->
+            <svg width="20px" height="20px" viewBox="0 0 24.00 24.00" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <title>Menu</title>
+                    <g id="Page-1" stroke-width="2.4" fill="none" fill-rule="evenodd">
+                        <g id="Menu">
+                            <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"> </rect>
+                            <line x1="5" y1="7" x2="19" y2="7" id="Path" stroke="#fff" stroke-width="2.4"
+                                stroke-linecap="round"> </line>
+                            <line x1="5" y1="17" x2="19" y2="17" id="Path" stroke="#fff" stroke-width="2.4"
+                                stroke-linecap="round"> </line>
+                            <line x1="5" y1="12" x2="19" y2="12" id="Path" stroke="#fff" stroke-width="2.4"
+                                stroke-linecap="round"> </line>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </ul>
+    </div>
 
     <div class="container">
-        <div class="wheel" onclick="spin()" style="margin-right: -60px">
+        <div class="col-1">
+            <button data-v-0c16652e="" class="edit-btn" tabindex="0" type="button"><span
+                    class="q-focus-helper"></span><span
+                    class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><i
+                        class="edit-btn-icon fas fa-pencil-alt" aria-hidden="true" role="img">
+                    </i><!----></span></button>
+        </div>
+        <div class="wheel" onclick="spin()">
             <canvas id="canvas" width="450" height="450"></canvas>
             <div class="center-circle">
-                <div class="triangle" style="margin-right: -80px; "></div>
+                <div class="triangle"></div>
             </div>
 
             <div data-v-e1ff2ff6="" id="instructionsLayer" style="font-size: 39px;">
@@ -640,66 +721,114 @@
         <div class="inputArea">
 
             <!-- Entries and Results Tabs -->
-            <div class="tabs" style="margin-top: -70px; margin-right: -50px;">
-                <ul>
-                    <li id="entriesTab" class="" style="background-color: #0d0d0d; font-size: 15px; font-weight: bold;">
-                        Entries<span class="tab-count">6</span></li>
-                    <li id="resultsTab" style="background-color: #0d0d0d; font-size: 15px; font-weight: bold;">
-                        Results<span class="tab-count">3</span></li>
-                    <input type="checkbox" id="hideResults">
-                    <label for="hideResults" style="margin-top: 7px;"> Hide</label>
+            <div class="tabs">
+                <ul class="li-textarea">
+                    <div class="textarea">
+
+                        <!-- <div class="helper"> -->
+                        <li id="entriesTab" class="entry-tab"
+                            style="background-color: #0d0d0d; font-size: 16px; font-weight: bold;">
+                            Entries<span class="entry-tab-count tab-count">0</span>
+                        </li>
+                        <!-- </div> -->
+
+                        <div class="helper">
+                            <li id="resultsTab" style="background-color: #0d0d0d; font-size: 16px; font-weight: bold;">
+                                Results<span class="result-tab-count tab-count">0</span>
+                            </li>
+                        </div>
+
+                    </div>
+                    <label for="hideResults">
+                        <input type="checkbox" id="hideResults">
+                        <span class="custom-checkbox"></span>
+                        Hide
+                    </label>
                 </ul>
             </div>
             <br><br>
             <!-- Container with background color -->
-            <div class="main-container">
-                <!-- Buttons Section -->
+            <div class="entry-container">
                 <div class="buttons">
                     <button id="shuffleBtn"><i class="fas fa-random"></i> Shuffle</button>
-                    <button id="sortBtn"><i class="fas fa-sort"></i> Sort</button>
+                    <button id="sortBtn"><svg width="20px" height="20px" viewBox="0 0 24.00 24.00" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="0.12000000000000002">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M8.78001 4.47C8.71001 4.4 8.63001 4.35 8.54001 4.31C8.36001 4.23 8.15001 4.23 7.97001 4.31C7.88001 4.35 7.80001 4.4 7.73001 4.47L5.23001 6.97C4.94001 7.26 4.94001 7.74 5.23001 8.03C5.52001 8.32 6.00001 8.32 6.29001 8.03L7.51001 6.81V19C7.51001 19.41 7.85001 19.75 8.26001 19.75C8.67001 19.75 9.01001 19.41 9.01001 19V6.81L10.23 8.03C10.38 8.18 10.57 8.25 10.76 8.25C10.95 8.25 11.14 8.18 11.29 8.03C11.58 7.74 11.58 7.26 11.29 6.97L8.79001 4.47H8.78001Z"
+                                    fill="#fff"></path>
+                                <path
+                                    d="M14 11.21C14.39 11.35 14.82 11.15 14.96 10.76L15.24 9.98001H17.27L17.55 10.76C17.66 11.07 17.95 11.26 18.26 11.26C18.34 11.26 18.43 11.25 18.51 11.22C18.9 11.08 19.1 10.65 18.96 10.26L17.25 5.47001C17.08 5.04001 16.69 4.76001 16.25 4.76001C15.81 4.76001 15.42 5.04001 15.25 5.49001L13.55 10.26C13.41 10.65 13.61 11.08 14 11.22V11.21ZM16.73 8.48001H15.77L16.25 7.14001L16.73 8.48001Z"
+                                    fill="#fff"></path>
+                                <path
+                                    d="M18.67 13.46C18.48 13.02 18.08 12.75 17.62 12.75H14.51C14.1 12.75 13.76 13.09 13.76 13.5C13.76 13.91 14.1 14.25 14.51 14.25H16.9L14.07 17.2C13.73 17.56 13.64 18.08 13.83 18.54C14.02 18.98 14.42 19.25 14.88 19.25H18.01C18.42 19.25 18.76 18.91 18.76 18.5C18.76 18.09 18.42 17.75 18.01 17.75H15.62L18.44 14.82C18.78 14.46 18.88 13.93 18.68 13.47L18.67 13.46Z"
+                                    fill="#fff"></path>
+                            </g>
+                        </svg> Sort</button>
                     <button id="addImageBtn"><i class="fas fa-image"></i> Add Image</button>
+                    <div class="advanced">
+                        <label for="advanced">
+                            <input type="checkbox" id="advanced">
+                            <span class="custom-checkbox"></span>
+                            Advanced
+                        </label>
+                    </div>
                 </div>
 
-                <!-- Text Area and Input -->
                 <textarea id="names" rows="15" cols="30"
-                    style="font-family: Arial; font-size: 16px; padding: 10px; width: 284px; line-height: 1.5"><?php echo htmlspecialchars($names); ?></textarea>
-
-                <script>
-                    // Add this function to send AJAX request to update the database
-                    function updateDatabase(names) {
-                        const xhr = new XMLHttpRequest();
-                        xhr.open("POST", "update_names.php", true);
-                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                        xhr.onreadystatechange = function () {
-                            if (xhr.readyState === XMLHttpRequest.DONE) {
-                                if (xhr.status === 200) {
-                                    console.log(xhr.responseText); // For debugging
-                                } else {
-                                    console.error("Error updating database");
-                                }
-                            }
-                        };
-                        xhr.send("names=" + encodeURIComponent(names));
-                    }
-
-                    // Modify the event listener for the textarea
-                    document.getElementById("names").addEventListener("input", function () {
-                        createWheel(); // Update the wheel with the new names
-                        updateDatabase(this.value); // Update the database with the new names
-                    });
-                </script>
-
-                <div>Comment mo to pag na test mo na <br>Line: 715-716 sa index.html</div>
-                <input id="stopName" type="" placeholder="Name to stop on" value="">
+                    style="font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 16px; padding: 10px; width: 284px; line-height: 1.5"></textarea>
+                <!-- <div>Comment mo to pag na test mo na <br>CTRL + F search mo to sa index.html</div> -->
+                <input id="stopName" type="hidden" placeholder="Name to stop on" value="">
 
                 <!-- Advanced Checkbox -->
-                <div class="advanced">
-                    <input type="checkbox" id="advanced" style="margin-right: -130px;">
-                    <label for="advanced" style="">Advanced</label>
+                <!-- <div class="advanced">
+                    <label for="advanced">
+                        <input type="checkbox" id="advanced" style="margin-right: -130px;">
+                        <span class="custom-checkbox"></span>
+                        Advanced
+                    </label>
+                </div> -->
+            </div>
+            <div class="result-container">
+
+                <div class="buttons">
+                    <button id="sortBtn" style="display: flex; gap: 8px;"><svg width="18px" height="18px"
+                            viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"
+                            stroke-width="2">
+                            <g id="SVGRepo_bgCarrier" stroke-width="1"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M8.78001 4.47C8.71001 4.4 8.63001 4.35 8.54001 4.31C8.36001 4.23 8.15001 4.23 7.97001 4.31C7.88001 4.35 7.80001 4.4 7.73001 4.47L5.23001 6.97C4.94001 7.26 4.94001 7.74 5.23001 8.03C5.52001 8.32 6.00001 8.32 6.29001 8.03L7.51001 6.81V19C7.51001 19.41 7.85001 19.75 8.26001 19.75C8.67001 19.75 9.01001 19.41 9.01001 19V6.81L10.23 8.03C10.38 8.18 10.57 8.25 10.76 8.25C10.95 8.25 11.14 8.18 11.29 8.03C11.58 7.74 11.58 7.26 11.29 6.97L8.79001 4.47H8.78001Z"
+                                    fill="#fff"></path>
+                                <path
+                                    d="M14 11.21C14.39 11.35 14.82 11.15 14.96 10.76L15.24 9.98001H17.27L17.55 10.76C17.66 11.07 17.95 11.26 18.26 11.26C18.34 11.26 18.43 11.25 18.51 11.22C18.9 11.08 19.1 10.65 18.96 10.26L17.25 5.47001C17.08 5.04001 16.69 4.76001 16.25 4.76001C15.81 4.76001 15.42 5.04001 15.25 5.49001L13.55 10.26C13.41 10.65 13.61 11.08 14 11.22V11.21ZM16.73 8.48001H15.77L16.25 7.14001L16.73 8.48001Z"
+                                    fill="#fff"></path>
+                                <path
+                                    d="M18.67 13.46C18.48 13.02 18.08 12.75 17.62 12.75H14.51C14.1 12.75 13.76 13.09 13.76 13.5C13.76 13.91 14.1 14.25 14.51 14.25H16.9L14.07 17.2C13.73 17.56 13.64 18.08 13.83 18.54C14.02 18.98 14.42 19.25 14.88 19.25H18.01C18.42 19.25 18.76 18.91 18.76 18.5C18.76 18.09 18.42 17.75 18.01 17.75H15.62L18.44 14.82C18.78 14.46 18.88 13.93 18.68 13.47L18.67 13.46Z"
+                                    fill="#fff"></path>
+                            </g>
+                        </svg> Sort</button>
+                    <button id="clearList" style="display: flex; gap: 8px;" onclick="clearList()">
+                        <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="1">
+                            <g id="SVGRepo_bgCarrier" stroke-width="4"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M6.99486 7.00636C6.60433 7.39689 6.60433 8.03005 6.99486 8.42058L10.58 12.0057L6.99486 15.5909C6.60433 15.9814 6.60433 16.6146 6.99486 17.0051C7.38538 17.3956 8.01855 17.3956 8.40907 17.0051L11.9942 13.4199L15.5794 17.0051C15.9699 17.3956 16.6031 17.3956 16.9936 17.0051C17.3841 16.6146 17.3841 15.9814 16.9936 15.5909L13.4084 12.0057L16.9936 8.42059C17.3841 8.03007 17.3841 7.3969 16.9936 7.00638C16.603 6.61585 15.9699 6.61585 15.5794 7.00638L11.9942 10.5915L8.40907 7.00636C8.01855 6.61584 7.38538 6.61584 6.99486 7.00636Z"
+                                    fill="#fff"></path>
+                            </g>
+                        </svg> Clear the list</button>
+                </div>
+                <div class="tab-panel" role="tabpanel">
+                    <div data-v-3b837523="" data-v-fc64632c="" class="results-textbox" spellcheck="false">
+                    </div>
                 </div>
 
             </div>
-
         </div>
 
 
@@ -1147,6 +1276,91 @@
             document.getElementById("names").addEventListener("input", createWheel);
         </script> -->
         <script>
+
+            function checkMediaQuery() {
+                // Define the media query
+                const mediaQuery = window.matchMedia("(max-width: 1240px)");
+                let menu = document.querySelector(".menu");
+                let logo = document.querySelector(".logo");
+
+
+
+                // Select the element
+                // Check if the media query matches
+                console.log(menu);
+                if (mediaQuery.matches) {
+                    menu.innerHTML = `
+                       <svg width="24px" height="24px" viewBox="0 0 24.00 24.00" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <title>Menu</title>
+                            <g id="Page-1" stroke-width="2.4" fill="none" fill-rule="evenodd">
+                                <g id="Menu">
+                                    <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"> </rect>
+                                    <line x1="5" y1="7" x2="19" y2="7" id="Path" stroke="#fff" stroke-width="2.4"
+                                        stroke-linecap="round"> </line>
+                                    <line x1="5" y1="17" x2="19" y2="17" id="Path" stroke="#fff" stroke-width="2.4"
+                                        stroke-linecap="round"> </line>
+                                    <line x1="5" y1="12" x2="19" y2="12" id="Path" stroke="#fff" stroke-width="2.4"
+                                        stroke-linecap="round"> </line>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>`;
+                    logo.innerHTML = `<a href="./" class="title">wheelofnames.com</a>`;
+
+                } else {
+                    menu.innerHTML = `
+                    <li><a href="#"><i class="fas     fa-palette"></i> Customize</a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i> New</a></li>
+                    <li><a href="#"><i class="fas fa-folder-open"></i> Open</a></li>
+                    <li><a href="#"><i class="fas fa-save"></i> Save</a></li>
+                    <li><a href="#"><i class="fas fa-share-alt"></i> Share</a></li>
+                    <li><a href="#"><i class="fas fa-search"></i> Gallery</a></li>
+                    <li> <a href="#"> <svg width="18px" height="18px" viewBox="0 0 24.00 24.00" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" stroke="#ffff"
+                                transform="rotate(0)matrix(1, 0, 0, -1, 0, 0)">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M4 9V5.6C4 5.03995 4 4.75992 4.10899 4.54601C4.20487 4.35785 4.35785 4.20487 4.54601 4.109C4.75992 4 5.03995 4 5.6 4L9 4M4 15V18.4C4 18.9601 4 19.2401 4.10899 19.454C4.20487 19.6422 4.35785 19.7951 4.54601 19.891C4.75992 20 5.03995 20 5.6 20L9 20M15 4H18.4C18.9601 4 19.2401 4 19.454 4.10899C19.6422 4.20487 19.7951 4.35785 19.891 4.54601C20 4.75992 20 5.03995 20 5.6V9M20 15V18.4C20 18.9601 20 19.2401 19.891 19.454C19.7951 19.6422 19.6422 19.7951 19.454 19.891C19.2401 20 18.9601 20 18.4 20H15"
+                                        stroke="fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </g>
+                            </svg></a></li>
+                    <li class="dropdown">
+                        <a href="#">More</a>
+                        <svg width="22px" height="22px" viewBox="-2.4 -2.4 28.80 28.80" xmlns="http://www.w3.org/2000/svg"
+                            fill="#fff" stroke="#fff" stroke-width="0.00024000000000000003">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <rect x="0" fill="none" width="24" height="24"></rect>
+                                <g>
+                                    <path d="M7 10l5 5 5-5"></path>
+                                </g>
+                            </g>
+                        </svg>
+                        <!-- <div class="dropdown-content">
+                            <a href="#">Option 1</a>
+                            <a href="#">Option 2</a>
+                        </div> -->
+                    </li>&nbsp &nbsp
+                    <li><a href="#"><i class="fas fa-globe"></i>English</a></li>`;
+                    logo.innerHTML = `    
+                            <img src="./images/logo-dark-background-38.png" alt="Wheel Logo" style="border-radius: 50%;" class="iconLogo"><span class="title">wheelofnames.com</span>`;
+                }
+            }
+
+            // Initial check when the page loads
+            checkMediaQuery();
+
+
+      
+            // Add an event listener to check for changes in the media query
+            window.addEventListener('resize', checkMediaQuery);
             function toRad(deg) {
                 return deg * (Math.PI / 180.0);
             }
@@ -1169,6 +1383,7 @@
 
             const canvas = document.getElementById("canvas");
             const ctx = canvas.getContext("2d");
+
             const width = canvas.width;
             const height = canvas.height;
 
@@ -1194,8 +1409,9 @@
 
                 // Save the current names to localStorage whenever the wheel is created/updated
                 localStorage.setItem('wheelNames', document.getElementById("names").value);
-
+                document.querySelector('.entry-tab-count').innerHTML = items.length;
                 draw();
+
             }
 
             function draw() {
@@ -1228,13 +1444,12 @@
                     ctx.fillStyle = textColor; // Dynamic text color based on the segment color
 
                     // Adjust font size based on segment width
-                    const fontSize = Math.min(40, radius / 4); // Adjust this value for better fit
-                    ctx.font = `${fontSize}px Arial`;
+                    const fontSize = Math.min(50, radius / 4); // Adjust this value for better fit
+                    ctx.font = `300 ${fontSize}px Roboto`;
 
                     // Draw text so that it's centered within the segment
-                    ctx.fillText(items[i], radius - 70, 10); // Adjusted position to keep text inside
+                    ctx.fillText(items[i], radius - 85, 15); // Adjusted position to keep text inside
                     ctx.restore();
-
                     itemDegs[items[i]] = {
                         "startDeg": startDeg,
                         "endDeg": endDeg
@@ -1246,15 +1461,16 @@
             let maxRotation = 0; // Reset this for each spin
             let pause = false;
             let lightSegments = []; // To store segment names dynamically
-            let speedIncrease = 0;
+            let speedIncrease = 50;
+            let temp = 0;
             function animate() {
                 if (pause) return;
                 // speed = easeOutSine(getPercent(currentDeg, maxRotation, 0)) * 30; // Increase speed for a faster spin
-                speed = easeOutSine((getPercent(currentDeg, maxRotation, 0))) * 50; // Increase speed for a faster spin
+                speed = easeOutSine((getPercent(currentDeg, maxRotation, temp))) * speedIncrease; // Increase speed for a faster spin
                 /* console.log(`CURRENT DEG: ${currentDeg}`);
             console.log(`PERCENTAGE: ${getPercent(currentDeg, maxRotation, 0) * 10}`);
             console.log(`SPEED: ${speed}`);
- */
+    */
                 if (speed < 0.01) {
                     speed = 0;
                     pause = true; // Stop the animation
@@ -1341,13 +1557,24 @@
 
                     currentDeg = 0; // Reset the current degree to start spinning again
                     draw();
+
                 } else {
 
                     // If the specified name is not found or input is empty, spin randomly
                     maxRotation = randomRange();
-                    currentDeg = 0; // Reset the current degree to start spinning again
                     console.log(`maxRotation: ${maxRotation}`);
+                    currentDeg = 0; // Reset the current degree to start spinning again
                 }
+
+                setTimeout(() => {
+                    const result = maxRotation >= 1142 && maxRotation < 1202 ? 'LIGHT' : 'DARK';
+                    let parent = document.querySelector('.results-textbox');
+                    parent.innerHTML += `<div class="res">${result}</div>`;
+
+                    document.querySelector('.result-tab-count').innerHTML = parent.childElementCount;
+                }, 2000)
+
+
 
                 pause = false; // Resume the animation
                 window.requestAnimationFrame(animate);
@@ -1358,6 +1585,14 @@
                 return Math.random() * 56.40000000000009;
             }
 
+            function clearList() {
+                let parent = document.querySelector('.results-textbox');
+                parent.innerHTML = '';
+
+                document.querySelector('.result-tab-count').innerHTML = parent.childElementCount;
+                
+            }
+
             function randomRange() {
                 const randomMultiplier = randomSegmentOfColor();
                 console.log(`RANDOM MULTIPLIER: ${randomMultiplier}`);
@@ -1366,14 +1601,14 @@
                 return a[index] + randomMultiplier;
             }
 
-
+            
             // Event listener for key presses
             window.addEventListener('keydown', (event) => {
                 switch (event.key) {
 
                     case '1':
                         // if (pause) return;
-                        // if (speed !== 0) return;
+                        if (speed !== 0) return;
                         const lightSegmentRandom = 1142 + (randomSegmentOfColor());
                         console.log(1142);
                         console.log(randomSegmentOfColor());
@@ -1382,11 +1617,12 @@
                         predeterminedResult = 'LIGHT'; // Set result to Light
                         console.log(`predeterminedResult: ${predeterminedResult}`);
                         var a = document.getElementById('stopName').value = predeterminedResult;
+                        spin();
                         break;
 
                     case '2':
                         // if (pause) return;
-                        // if (speed !== 0) return;
+                        if (speed !== 0) return;
                         const darkSegmentRandom = 1202 + (randomSegmentOfColor());
                         console.log(1202);
                         console.log(darkSegmentRandom);
@@ -1394,11 +1630,31 @@
                         maxRotation = darkSegmentRandom
                         console.log(`predeterminedResult: ${predeterminedResult}`);
                         document.getElementById('stopName').value = predeterminedResult;
+                        spin();
                         break;
 
                     case '3':
                         maxRotation = randomRange();
                         document.getElementById('stopName').value = '';
+                        spin();
+                        break;
+
+                    case 'z':
+                    case 'Z':
+                        //3 secs
+                        speedIncrease = 20;
+                        temp = 180;
+                        console.log(`SPEED SET TO: ${speedIncrease}`);
+                        console.log(`SPIN TIME SET TO: 3 seconds`);
+                        break;
+
+                    case 'x':
+                    case 'X':
+                        //2 secs
+                        speedIncrease = 50;
+                        temp = 0;
+                        console.log(`SPEED SET TO: ${speedIncrease}`);
+                        console.log(`SPIN TIME SET TO: 2 seconds`);
                         break;
                     default:
                         break;
